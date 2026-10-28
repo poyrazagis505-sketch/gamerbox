@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamerbox</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">Gamerbox</div>
+        <nav class="nav-links">
+          <a href="#discover">Keşfet</a>
+          <a href="#communities">Topluluklar</a>
+          <a href="#profile">Profil</a>
+        </nav>
+        <button id="authButton" class="primary-btn">Giriş</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="auth-panel hidden" id="authPanel">
+        <div class="auth-box">
+          <h2>Giriş / Kayıt</h2>
+
+          <div class="tab-row">
+            <button class="tab-btn active" data-tab="login">Giriş</button>
+            <button class="tab-btn" data-tab="signup">Kayıt</button>
+          </div>
+
+          <form id="authForm">
+            <label>
+              Email
+              <input id="email" type="email" required />
+            </label>
+
+            <label>
+              Şifre
+              <input id="password" type="password" required />
+            </label>
+
+            <button type="submit" class="primary-btn full-width">Devam</button>
+          </form>
+
+          <div class="divider">veya</div>
+
+          <button id="googleLogin" class="secondary-btn full-width">
+            Google ile giriş
+          </button>
+        </div>
+      </section>
+
+      <section id="appContent">
+        <section class="hero">
+          <div>
+            <span class="badge">Letterboxd + Reddit + Steam</span>
+            <h1>Oyunlarını puanla, listeler kur, topluluğa katıl.</h1>
+            <p>
+              Steam saatleri, oyun incelemeleri, topluluklar, listeler ve oyuncu
+              sohbeti tek platformda.
+            </p>
+            <div class="hero-actions">
+              <button id="discoverBtn" class="primary-btn">Keşfet</button>
+              <button id="dashboardBtn" class="secondary-btn">Dashboard</button>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <h3>En çok oynanan</h3>
+            <div class="hero-row">
+              <span>Cyberpunk 2077</span>
+              <strong>8.8</strong>
+            </div>
+            <div class="progress"><span style="width: 84%"></span></div>
+            <small>145 saat oynanma</small>
+          </div>
+        </section>
+
+        <section class="panel" id="discover">
+          <div class="section-head">
+            <h2>Keşfet</h2>
+            <button id="loadGamesBtn" class="secondary-btn">Oyunları Yükle</button>
+          </div>
+          <div id="gamesGrid" class="games-grid"></div>
+        </section>
+
+        <section class="panel" id="communities">
+          <div class="section-head">
+            <h2>Topluluklar</h2>
+          </div>
+          <div id="communitiesGrid" class="communities-grid"></div>
+        </section>
+
+        <section class="panel" id="profile">
+          <div class="section-head">
+            <h2>Profil</h2>
+            <button id="addGameBtn" class="primary-btn">Oyun Ekle</button>
+          </div>
+          <div id="userProfile" class="profile-card">Yükleniyor...</div>
+        </section>
+      </section>
+    </main>
+
+    <div id="gameModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Oyun ekle</h3>
+          <button id="closeModalBtn" class="close-btn">✕</button>
+        </div>
+
+        <form id="gameForm">
+          <label>
+            Oyun
+            <select id="gameSelect"></select>
+          </label>
+
+          <label>
+            Durum
+            <select id="statusSelect">
+              <option value="played">Oynandı</option>
+              <option value="playing">Oynanıyor</option>
+              <option value="backlog">Backlog</option>
+              <option value="wishlist">İstek Listesi</option>
+              <option value="dropped">Bırakıldı</option>
+            </select>
+          </label>
+
+          <label>
+            Puan
+            <input id="ratingInput" type="number" min="1" max="10" value="8" />
+          </label>
+
+          <label>
+            İnceleme
+            <textarea id="reviewInput" rows="4" placeholder="Oyun hakkındaki düşüncen..."></textarea>
+          </label>
+
+          <label class="checkbox-row">
+            <input id="likedInput" type="checkbox" />
+            <span>Beğendim</span>
+          </label>
+
+          <button type="submit" class="primary-btn full-width">Kaydet</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
